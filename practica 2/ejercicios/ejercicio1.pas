@@ -18,7 +18,7 @@ type
 	
 	archivo_total= file of empleadototal;
 	
-procedure leer (var detalle:archivo_empleados;reg:empleado);
+procedure leer (var detalle:archivo_empleados; var reg:empleado);
 begin
 	if (not eof(detalle)) then
 		read(detalle,reg)
