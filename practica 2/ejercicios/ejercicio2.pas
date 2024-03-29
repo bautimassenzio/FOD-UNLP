@@ -40,14 +40,14 @@ begin
 	reset (maestro);
 	leer(detalle,regde);
 	read(maestro,regma);
-	while (regde.cod<>valoralto) do begin
+	while (regde.cod<>valoralto) do begin		
 		totalfinal:=0;
 		totalcursada:=0;
 		aux:=regde.cod;
-		while (regde.cod=aux) do begin
-			if (regde.finall) then
-				totalfinal:=totalfinal+1
-			else if (regde.cursada) then
+		while (regde.cod=aux) do begin			
+			if (regde.finall) then begin
+				totalfinal:=totalfinal+1;
+			end else if (regde.cursada) then
 				totalcursada:=totalcursada +1;
 			leer(detalle,regde);
 		end;
@@ -60,7 +60,6 @@ begin
 		regma.finales:=regma.finales + totalfinal;
 		regma.cursadas:=regma.cursadas - totalfinal;
 		seek(maestro, filepos(maestro)-1);
-		
 		write (maestro,regma);
 		
 		if not eof(maestro) then
@@ -86,6 +85,7 @@ var
 	archivo: Text;
 	reg:alumno;
 begin
+	assign(archivo, 'C:\Users\bauti\OneDrive\Escritorio\texto.txt');
 	reset(maestro);
 	rewrite(archivo);
 	while not eof(maestro) do begin
